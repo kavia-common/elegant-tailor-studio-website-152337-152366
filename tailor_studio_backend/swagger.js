@@ -4,12 +4,18 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'My Express API',
+      title: 'Tailor Studio Backend API',
       version: '1.0.0',
-      description: 'A simple Express API documented with Swagger',
-    }
+      description:
+        'REST API for handling contact form submissions and newsletter subscriptions for the Tailor Studio website.',
+    },
+    tags: [
+      { name: 'Health', description: 'Service health and status' },
+      { name: 'Forms', description: 'Contact form and newsletter subscription endpoints' },
+    ],
   },
-  apis: ['./src/routes/*.js'], // Path to the API docs
+  // Paths to scan for OpenAPI JSDoc annotations
+  apis: ['./src/routes/*.js', './src/controllers/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
